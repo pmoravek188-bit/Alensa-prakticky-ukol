@@ -19,4 +19,4 @@ ExpressCourier_DE zdražil o 15 % a průměrná doba doručení se prodloužila 
 
 ---
 
-*Text byl vygenerován s pomocí AI a následně zredigován tak, aby byl úderný, konkrétní a přímo použitelný pro CMO (jedna věta = problém, jedna = doporučení + termín, jedna = návrh další analýzy).*
+*Text byl vygenerován s pomocí AI a následně zredigován tak, aby byl úderný, konkrétní a přímo použitelný pro CMO (2 věty: 1. problém, 2. doporučení + další analýza).*
