@@ -1,0 +1,11 @@
+=== PROMPT POUŽITÝ PRO VYTVOŘENÍ DUMMY DATASETU (Úkol 1) ===
+
+Vytvoř dummy dataset v CSV pro e-shop na německém trhu. Kontext: marketing vidí rostoucí ROAS, logistika hlásí vyšší náklady na dopravu, celková ziskovost (marže) klesá.
+
+Dataset musí obsahovat a spojovat:
+- objednávky: order_id, date, country (DE), product_id, quantity, revenue (tržby), product_cost (náklady na zboží)
+- marketing: campaign_id nebo channel, spend (utraceno), ROAS (Return on Ad Spend), CPA (Cost per Acquisition) – hodnoty tak, aby ROAS mezi obdobími rostl
+- logistika: carrier (např. ExpressCourier_DE, StandardPost_DE), shipping_cost, delivery_time_days (skutečná doba doručení ve dnech), is_returned (0/1)
+- aby byla simulovaná situace věrohodná: u jednoho dopravce (ExpressCourier_DE) nech delivery_time_days vyšší a shipping_cost vyšší v pozdějším období, více vratek tam, kde je zpoždění
+
+Formát: CSV, hlavička v první řádce, cca 80–150 řádků, datumová osa např. leden–únor 2025. Jednotlivé sloupce pojmenuj anglicky (order_id, date, country, carrier, delivery_time_days, shipping_cost, product_cost, revenue, marketing_spend, ROAS, CPA, is_returned). Přidej i sloupec margin nebo profit (revenue minus product_cost minus shipping_cost minus podíl marketing nákladů).

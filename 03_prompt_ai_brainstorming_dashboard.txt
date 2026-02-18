@@ -1,0 +1,3 @@
+=== PROMPT POUŽITÝ PRO BRAINSTORMING DASHBOARDU (Úkol 3) ===
+
+Máme e-shop na německém trhu. Marketing vidí rostoucí ROAS, logistika hlásí vyšší náklady na dopravu a zpoždění, marže klesá. Navrhni dashboard pro CMO a top management, který jasně ukáže vztah mezi marketingem, logistikou a ziskovostí. Jaké hlavní KPI ukázat hned nahoře (3–5)? Jaké grafy a filtry zvolit, aby bylo na první pohled jasné, proč marže klesá, i když ROAS roste? Výstup: přehled KPI, typy grafů, doporučené filtry (období, trh, dopravce).

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard DE – wireframe pro CMO / Top Management</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: system-ui, sans-serif; margin: 16px; background: #f5f5f5; color: #333; }
+    .dashboard { max-width: 1200px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+    h1 { font-size: 1.25rem; margin: 0 0 16px; color: #111; }
+    .filters { background: #e8e8e8; padding: 10px 14px; border-radius: 6px; margin-bottom: 20px; font-size: 0.9rem; }
+    .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-bottom: 20px; }
+    .kpi { border: 1px solid #ccc; border-radius: 6px; padding: 14px; text-align: center; background: #fafafa; }
+    .kpi .label { font-size: 0.75rem; color: #666; text-transform: uppercase; margin-bottom: 4px; }
+    .kpi .value { font-size: 1.5rem; font-weight: 700; }
+    .charts { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .chart { border: 1px dashed #999; border-radius: 6px; min-height: 180px; padding: 14px; background: #fafafa; }
+    .chart.full { grid-column: 1 / -1; }
+    .chart .title { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; color: #444; }
+    .chart .placeholder { color: #999; font-size: 0.8rem; }
+    .table-wrap { border: 1px dashed #999; border-radius: 6px; padding: 14px; background: #fffbf0; margin-bottom: 20px; }
+    .table-wrap .title { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+    .waterfall { border: 1px dashed #999; border-radius: 6px; padding: 14px; min-height: 120px; background: #f0f8ff; }
+    .waterfall .title { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <h1>DE trh – Marketing × Logistika × Ziskovost</h1>
+    <div class="filters">Filtry: Období (7 / 30 / 90 dní) · Trh (DE) · Dopravce (všichni / ExpressCourier_DE / StandardPost_DE)</div>
+    <div class="kpi-row">
+      <div class="kpi"><div class="label">Marže %</div><div class="value">—</div></div>
+      <div class="kpi"><div class="label">ROAS</div><div class="value">—</div></div>
+      <div class="kpi"><div class="label">Prům. doručení (dny)</div><div class="value">—</div></div>
+      <div class="kpi"><div class="label">Vratky %</div><div class="value">—</div></div>
+      <div class="kpi"><div class="label">Doprava / tržby %</div><div class="value">—</div></div>
+    </div>
+    <div class="charts">
+      <div class="chart">
+        <div class="title">Marže % vs. ROAS v čase (duální osa)</div>
+        <div class="placeholder">Čárový graf · ukázat divergenci</div>
+      </div>
+      <div class="chart">
+        <div class="title">Průměrná doba doručení po dopravcích</div>
+        <div class="placeholder">Sloupcový graf</div>
+      </div>
+      <div class="chart full">
+        <div class="title">Náklady na dopravu a podíl vratek v čase</div>
+        <div class="placeholder">Sloupce + čára</div>
+      </div>
+    </div>
+    <div class="table-wrap">
+      <div class="title">Aktivní alerty – anomálie v dodací lhůtě (&gt;30 % nad 14denní průměr)</div>
+      <div class="placeholder">Tabulka: dopravce · datum · průměr ten den · nárůst %</div>
+    </div>
+    <div class="waterfall">
+      <div class="title">Rozpad zisku (waterfall)</div>
+      <div class="placeholder">Tržby → − zboží → − doprava → − marketing = zisk</div>
+    </div>
+  </div>
+</body>
+</html>
