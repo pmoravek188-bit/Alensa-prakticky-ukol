@@ -34,7 +34,7 @@ Jasně ukázat **vztah mezi marketingem, logistikou a ziskovostí** na německé
    – Dny/dopravci, kde doba doručení vzrostla >30 % oproti 14dennímu průměru (výstup z Úkolu 2). Červeně zvýrazněné řádky.
 
 5. **Rozpad zisku (waterfall nebo stacked bar)**  
-   – Tržby → − náklady na zboží → − doprava → − marketing = zisk. Pro DE, volitelně srovnání s jiným trhem.
+   – Tržby → − náklady na zboží → − doprava → − marketing → − vratky (return_cost) = zisk. Pro DE, volitelně srovnání s jiným trhem.
 
 ---
 

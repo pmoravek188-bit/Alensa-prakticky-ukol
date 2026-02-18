@@ -13,65 +13,88 @@ from pathlib import Path
 DATA_PATH = Path(__file__).parent / "orders_marketing_logistics_de.csv"
 OUTPUT_PATH = Path(__file__).parent / "02_alerts_vysledky.csv"
 
+
 def load_data(path: Path) -> pd.DataFrame:
     df = pd.read_csv(path)
     df["date"] = pd.to_datetime(df["date"])
     return df
 
-def detect_delivery_anomalies(df: pd.DataFrame, threshold_pct: float = 0.30) -> pd.DataFrame:
+
+def detect_delivery_anomalies(
+    df: pd.DataFrame,
+    threshold_pct: float = 0.30,
+    window_days: int = 14,
+    min_periods: int = 14,
+) -> pd.DataFrame:
     """
-    Pro každý den a každého dopravce: porovná průměrnou delivery_time_days
-    daného dne s průměrem za předchozích 14 dní. Pokud je nárůst > threshold_pct, je to anomálie.
+    Pro každý den a každého dopravce:
+    - spočítá průměr delivery_time_days v daný den
+    - porovná s průměrem z předchozích 14 dní (bez dne "dnes")
+    - pokud je nárůst > threshold_pct, označí jako anomálii
     """
-    results = []
-    carriers = df["carrier"].unique()
-    min_date = df["date"].min()
-    
-    for carrier in carriers:
-        carrier_df = df[df["carrier"] == carrier].copy()
-        carrier_df = carrier_df.sort_values("date")
-        
-        # Pro každý den: průměrná doba doručení v ten den
-        daily_avg = carrier_df.groupby("date")["delivery_time_days"].mean().reset_index()
-        daily_avg.columns = ["date", "avg_delivery_that_day"]
-        
-        for i, row in daily_avg.iterrows():
-            day = row["date"]
-            avg_today = row["avg_delivery_that_day"]
-            # Průměr za předchozích 14 dní (včetně předchozího dne, ne včetně dne „dnes“)
-            window_start = day - pd.Timedelta(days=14)
-            window_end = day - pd.Timedelta(days=1)
-            past_data = carrier_df[(carrier_df["date"] >= window_start) & (carrier_df["date"] <= window_end)]
-            
-            if len(past_data) == 0:
-                continue
-            avg_last_14 = past_data["delivery_time_days"].mean()
-            if avg_last_14 <= 0:
-                continue
-            pct_change = (avg_today - avg_last_14) / avg_last_14
-            if pct_change > threshold_pct:
-                results.append({
-                    "carrier": carrier,
-                    "date": day.strftime("%Y-%m-%d"),
-                    "avg_delivery_that_day": round(avg_today, 2),
-                    "avg_last_14_days": round(avg_last_14, 2),
-                    "pct_increase": round(pct_change * 100, 1),
-                    "alert": "ANOMALIE",
-                })
-    
-    return pd.DataFrame(results)
+    daily_avg = (
+        df.groupby(["carrier", "date"], as_index=False)["delivery_time_days"]
+        .mean()
+        .rename(columns={"delivery_time_days": "avg_delivery_that_day"})
+        .sort_values(["carrier", "date"])
+    )
+
+    # Rolling průměr za předchozích 14 dní (bez dne "dnes")
+    daily_avg["avg_last_14_days"] = (
+        daily_avg.groupby("carrier")["avg_delivery_that_day"]
+        .apply(lambda s: s.rolling(window_days, min_periods=min_periods).mean().shift(1))
+        .reset_index(level=0, drop=True)
+    )
+
+    daily_avg["pct_increase"] = (
+        (daily_avg["avg_delivery_that_day"] - daily_avg["avg_last_14_days"])
+        / daily_avg["avg_last_14_days"]
+    )
+
+    alerts = daily_avg[
+        (daily_avg["avg_last_14_days"].notna())
+        & (daily_avg["pct_increase"] > threshold_pct)
+    ].copy()
+
+    if alerts.empty:
+        return pd.DataFrame(columns=[
+            "carrier",
+            "date",
+            "avg_delivery_that_day",
+            "avg_last_14_days",
+            "pct_increase",
+            "alert",
+        ])
+
+    alerts["pct_increase"] = (alerts["pct_increase"] * 100).round(1)
+    alerts["avg_delivery_that_day"] = alerts["avg_delivery_that_day"].round(2)
+    alerts["avg_last_14_days"] = alerts["avg_last_14_days"].round(2)
+    alerts["alert"] = "ANOMALIE"
+
+    alerts["date"] = alerts["date"].dt.strftime("%Y-%m-%d")
+    return alerts[[
+        "carrier",
+        "date",
+        "avg_delivery_that_day",
+        "avg_last_14_days",
+        "pct_increase",
+        "alert",
+    ]]
+
 
 def main():
     df = load_data(DATA_PATH)
     alerts = detect_delivery_anomalies(df, threshold_pct=0.30)
-    
+
+    alerts.to_csv(OUTPUT_PATH, index=False)
+
     if len(alerts) == 0:
         print("Žádné anomálie nebyly detekovány (žádný den nepřekročil +30 % oproti 14dennímu průměru).")
         return
-    
-    alerts.to_csv(OUTPUT_PATH, index=False)
+
     print(f"Nalezeno {len(alerts)} anomálií. Výstup uložen do: {OUTPUT_PATH}")
     print(alerts.to_string(index=False))
+
 
 if __name__ == "__main__":
     main()

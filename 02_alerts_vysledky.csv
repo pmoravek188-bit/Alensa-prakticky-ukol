@@ -1,11 +1,7 @@
 carrier,date,avg_delivery_that_day,avg_last_14_days,pct_increase,alert
-ExpressCourier_DE,2025-01-06,3.0,2.0,50.0,ANOMALIE
-ExpressCourier_DE,2025-01-14,3.0,2.14,40.0,ANOMALIE
-ExpressCourier_DE,2025-01-24,3.0,2.14,40.0,ANOMALIE
-ExpressCourier_DE,2025-01-26,4.0,2.29,75.0,ANOMALIE
-ExpressCourier_DE,2025-01-28,4.0,2.57,55.6,ANOMALIE
-ExpressCourier_DE,2025-01-31,4.0,2.86,40.0,ANOMALIE
-ExpressCourier_DE,2025-02-01,4.0,3.0,33.3,ANOMALIE
-ExpressCourier_DE,2025-02-02,5.0,3.25,53.8,ANOMALIE
-ExpressCourier_DE,2025-02-04,5.0,3.67,36.4,ANOMALIE
-StandardPost_DE,2025-01-09,6.0,4.33,38.5,ANOMALIE
+ExpressCourier_DE,2025-02-01,4.0,2.57,55.6,ANOMALIE
+ExpressCourier_DE,2025-02-02,5.0,2.64,89.2,ANOMALIE
+ExpressCourier_DE,2025-02-03,5.0,2.79,79.5,ANOMALIE
+ExpressCourier_DE,2025-02-04,5.0,2.93,70.7,ANOMALIE
+ExpressCourier_DE,2025-02-05,5.0,3.07,62.8,ANOMALIE
+ExpressCourier_DE,2025-02-11,5.0,3.79,32.1,ANOMALIE

@@ -1,3 +1,10 @@
 === PROMPT POUŽITÝ PRO NÁVRH PYTHON SKRIPTU (Úkol 2) ===
 
-Napiš Python skript s pandas, který načte CSV s objednávkami. V datech jsou sloupce: date, carrier, delivery_time_days. Úkol: identifikovat dny, kdy průměrná doba doručení (delivery_time_days) u konkrétního dopravce (carrier) stoupla o více než 30 % oproti průměru za posledních 14 dní. Výstup: seznam/tabulka s dopravcem, datem, průměrem v ten den, průměrem za 14 dní a procentuálním nárůstem. Skript má být spustitelný z příkazové řádky a výsledek uložit do CSV.
+Napiš Python skript s pandas, který načte CSV s objednávkami. V datech jsou sloupce: date, carrier, delivery_time_days. 
+Úkol: identifikovat dny, kdy průměrná doba doručení (delivery_time_days) u konkrétního dopravce (carrier) stoupla o více než 30 % oproti průměru za posledních 14 dní.
+
+Požadavky:
+- nejdříve spočítej denní průměry delivery_time_days pro každého dopravce
+- baseline = rolling průměr z předchozích 14 dní (bez dne „dnes“), s min_periods=14
+- výstup: tabulka s dopravcem, datem, průměrem v ten den, průměrem za 14 dní a procentuálním nárůstem
+- skript spustitelný z příkazové řádky, výsledek ulož do CSV
