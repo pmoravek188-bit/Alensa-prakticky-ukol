@@ -15,12 +15,7 @@ Dopravce „ExpressCourier_DE“ plošně zdražil o 15 %, průměrná doba doru
 
 **Předmět:** DE – ExpressCourier_DE: zdražení a zpoždění sráží marži
 
-Dobrý den,
-
-ExpressCourier_DE zdražil o 15 % a průměrná doba doručení se mu prodloužila ze 2 na 4 dny, což výrazně zvedlo vratky a stáhlo marži na německém trhu. Doporučuji do 2 týdnů vyhodnotit přepnutí části objemů na alternativního dopravce (např. StandardPost_DE) a zároveň nechat připravit kalkulaci: jak se změní marže a ROAS při různých mixech dopravců, abychom mohli rozhodnout na datech.
-
-S pozdravem  
-[Vaše jméno]
+ExpressCourier_DE zdražil o 15 % a průměrná doba doručení se prodloužila ze 2 na 4 dny – to znatelně zvýšilo vratky a stáhlo marži na německém trhu. Doporučuji do 14 dní otestovat přesun části objemů na StandardPost_DE a připravit analýzu dopadu různých mixů dopravců na ROAS a marži, abychom mohli rozhodnout na datech.
 
 ---
 
