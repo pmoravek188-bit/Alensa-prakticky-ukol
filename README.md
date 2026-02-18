@@ -4,6 +4,14 @@ Vypracované úkoly podle zadání (případová studie e‑shop, DE trh).
 
 ---
 
+## Hlavní závěry (Key Takeaways)
+
+1. V datech **ROAS roste**, ale **marže klesá** kvůli dražší dopravě a delšímu doručení.
+2. **ExpressCourier_DE v únoru** vykazuje skok v `shipping_cost` i `delivery_time_days`, což zvyšuje **vratky** a snižuje zisk.
+3. Alerting skript spolehlivě zachytí dny s nárůstem dodací lhůty >30 % proti 14dennímu průměru a je připravený pro napojení na Slack / e‑mail.
+
+---
+
 ## Obsah složky
 
 | Soubor | Popis |
