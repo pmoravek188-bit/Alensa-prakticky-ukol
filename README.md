@@ -47,4 +47,4 @@ Výstup: `02_alerts_vysledky.csv` + výpis anomálií v konzoli.
 
 ## Poznámka k využití AI
 
-Ke všem úkolům byly použity AI nástroje; kompletní prompty jsou v souborech `*_prompt*.txt` a v dokumentech u příslušných úkolů. Finální výstupy byly zredigovány a přizpůsobeny zadání (srozumitelnost, byznysový přínos, údernost).
+Ke všem úkolům byly použity AI nástroje; kompletní prompty jsou v souborech `*_prompt*.txt` a v dokumentech u příslušných úkolů. Finální výstupy byly upraveny a přizpůsobeny zadání (srozumitelnost, byznysový přínos, údernost).
